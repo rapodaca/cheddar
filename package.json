@@ -1,8 +1,8 @@
 {
-  "name": "nodeproj",
+  "name": "cheddar",
   "version": "0.0.1",
-  "description": "A simple template for Jasmine-tested Node projects",
-  "private": true,
+  "description": "A Bitcoin wallet library",
+  "private": false,
   "dependencies": {
 
   },
