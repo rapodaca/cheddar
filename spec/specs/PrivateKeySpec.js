@@ -36,10 +36,16 @@ describe("PrivateKey", function() {
     });
   });
   describe("#toWIF", function() {
-    it("returns uncompressed WIF", function() {
+    it("returns correct WIF given uncompressed", function() {
       var key = new PrivateKey(hexKey);
 
       expect(key.toWIF()).toEqual('5Hx15HFGyep2CfPxsJKe2fXJsCVn5DEiyoeGGF6JZjGbTRnqfiD');
+    });
+    // https://bitcointalk.org/index.php?topic=129652.0
+    it("returns correct WIF given compressed", function() {
+      var key = new PrivateKey('19fdab0668a2586da7bea56410c814b83be86a956bb8565aea78651c174bfc04');
+
+      expect(key.toWIF(true)).toEqual('Kx6EWgKRJ2GZuXbrDquQPAE8MWZLLdsT4YYgQs4hdF7rRL4jGLHx');
     });
   });
   describe("#getNetwork", function() {
@@ -52,6 +58,14 @@ describe("PrivateKey", function() {
       var key = new PrivateKey(hexKey, { network: 'testnet' });
 
       expect(key.getNetwork()).toEqual('testnet');
+    });
+  });
+  describe("#getPoint", function() {
+    it("returns point", function() {
+      var key = new PrivateKey(hexKey);
+      var point = key.getPoint();
+
+      expect(point.toString()).toEqual('(94350599354702991638115641145587378352504262019718045113528956524844218675055,85864489789504288907478294460159639524773840349397540705495360734885545997461)');
     });
   });
   describe("#getEncodedPoint", function() {
