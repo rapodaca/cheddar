@@ -4,7 +4,7 @@
   "description": "A Bitcoin wallet library",
   "private": false,
   "dependencies": {
-
+    "jshashes": "1.0.4"
   },
   "devDependencies": {
     "jasmine-node": "1.11.x"
